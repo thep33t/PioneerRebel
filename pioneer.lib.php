@@ -24,6 +24,7 @@
 			fwrite($fp, $cmd);
 			$out = fgets($fp);
 			fclose($fp);
+			flush();
 			// Cool-down time (my VSX preferred 200ms between reconnects...)
 			usleep(200000);
 			return $out;
@@ -82,9 +83,11 @@
 		if ( $out === false ) return false;
 		// It would be best to have a more-rigorous failure handling for this one:
 		if (trim($out) == 'PWR0'){
-			echo 'Power On';
+			$val = 'PO';
+			return $val;
 		} else {
-			echo 'Power Off';
+			$val = 'PF';
+			return $val;
 		}
 	}
 	// Request percent of maximum volume currently seen set on the 822-K (this is
