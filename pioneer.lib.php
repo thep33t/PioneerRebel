@@ -1,25 +1,6 @@
 <?php
-	/* WARNING WARNING WARNING
-	 * This is *NOT* a Microsoft (or similar) C/C++ (or other) linker library!
-	 * It is, in fact, a PHP file require()'d by Quinn Ebert's "Pioneer Rebel"
-	 * open source software project.
-	 * WARNING WARNING WARNING
-	 * 
-	 * pioneer.lib.php :: Pioneer VSX-822-K Telnet Functions
-	 * Part of Quinn Ebert's "Pioneer Rebel" Software Project
-	 * 
-	 * DISCLAIMER:
-	 * "Pioneer Rebel" is a software project wholly unaffiliated with Pioneer
-	 * Electronics.  In no way is "Pioneer Rebel" authorized, supported,
-	 * acknowledged, or endorsed by Pioneer Electronics.  FURTHERMORE, you use
-	 * this software project AT YOUR OWN RISK.  The possibility indeed exists
-	 * that bugs exist in this software which could lead to catastrophic
-	 * failure of your Pioneer Electronics equipment.  In no event shall Quinn
-	 * Ebert or Pioneer Electronics be held in any way liable for malfunction,
-	 * damage, or destruction to your personal property (including but not
-	 * limited to personal property created and/or manufactured by Pioneer
-	 * Electronics) arising from your use of (or failure to use) this project.
-	 */
+	 # pioneer.lib.php :: Pioneer VSX-822-K Telnet Functions
+	 # Forked and modified from Quinn Ebert's "Pioneer Rebel" Software Project
 	
 	// Send a command, with optional prefixed or suffixed parameter, to the 822-K
 	// Returns corresponding controller response on OK or false (boolean) on error
@@ -43,8 +24,8 @@
 			fwrite($fp, $cmd);
 			$out = fgets($fp);
 			fclose($fp);
-			// Cool-down time (my VSX preferred 100ms between reconnects...)
-			usleep(100000);
+			// Cool-down time (my VSX preferred 200ms between reconnects...)
+			usleep(200000);
 			return $out;
 		}
 		return false;
@@ -69,10 +50,7 @@
 	// Pass $fnPower=true for power-on (requires network over sleep enabled)
 	// Pass $fnPower=false for power-off
 	function PioneerCtrl_setPower($address,$fnPower) {
-		$powerTo = 'F';
-		if ($fnPower)
-			$powerTo = 'O';
-		PioneerCtrl_SEND_CMD($address,'P'.$powerTo);
+			PioneerCtrl_SEND_CMD($address,$fnPower);
 	}
 	// Send a command to the 822-K amp unit requesting the muting turn on or off
 	// 
@@ -98,6 +76,16 @@
 		$out = substr($out,3);
 		if ($out!=='0'&&$out!=='1') return false;
 		return intval(trim($out));
+	}
+	function PioneerCtrl_getPower($address) {
+		$out = PioneerCtrl_SEND_CMD($address,'?P');
+		if ( $out === false ) return false;
+		// It would be best to have a more-rigorous failure handling for this one:
+		if (trim($out) == 'PWR0'){
+			echo 'Power On';
+		} else {
+			echo 'Power Off';
+		}
 	}
 	// Request percent of maximum volume currently seen set on the 822-K (this is
 	// gathered by equating the 81 distinct volume levels to the closest integers
@@ -147,4 +135,94 @@
 		$val = trim($out);
 		return $inNames[$val];
 	}
+	
+	# switches preset station
+	function PioneerCtrl_setPreset($address,$presetno) {
+		PioneerCtrl_SEND_CMD($address,$presetno.'PR');
+	}
+	# Sets "Advanced Surround" like on the remote
+	function PioneerCtrl_setAdvSurr($address) {
+		PioneerCtrl_SEND_CMD($address,'0100SR');
+	}
+	# Sets "Auto/Direct" like on the remote
+	function PioneerCtrl_setAutoDirect($address) {
+		PioneerCtrl_SEND_CMD($address,'0005SR');
+	}
+	# Sets "ALC/Standard" like on the remote
+	function PioneerCtrl_setAlcStd($address) {
+		PioneerCtrl_SEND_CMD($address,'0010SR');
+	}
+	# Presses Play button
+	function PioneerCtrl_pushPlay($address) {
+		PioneerCtrl_SEND_CMD($address,'10PB');
+	}
+	# Presses Pause button
+	function PioneerCtrl_pushPause($address) {
+		PioneerCtrl_SEND_CMD($address,'11PB');
+	}
+	# Presses Skip Reverse button
+	function PioneerCtrl_pushRSkip($address) {
+		PioneerCtrl_SEND_CMD($address,'12PB');
+	}
+	# Presses Skip Forward button
+	function PioneerCtrl_pushFSkip($address) {
+		PioneerCtrl_SEND_CMD($address,'13PB');
+	}
+	# Presses Stop button
+	function PioneerCtrl_pushStop($address) {
+		PioneerCtrl_SEND_CMD($address,'20PB');
+	}
+	# Presses Enter button
+	function PioneerCtrl_pushEnter($address) {
+		PioneerCtrl_SEND_CMD($address,'30PB');
+	}
+	# Presses Return button
+	function PioneerCtrl_pushReturn($address) {
+		PioneerCtrl_SEND_CMD($address,'31PB');
+	}
+	# Presses iPod Control button
+	function PioneerCtrl_pushIpod($address) {
+		PioneerCtrl_SEND_CMD($address,'40PB');
+	}
+	# Sets function up (like physical jog wheel)
+	function PioneerCtrl_setFNUp($address) {
+		PioneerCtrl_SEND_CMD($address,'FU');
+	}
+	# Sets function down (like physical jog wheel)
+	function PioneerCtrl_setFNDn($address) {
+		PioneerCtrl_SEND_CMD($address,'FD');
+	}
+	# ReceiveGenerationInfo
+	function PioneerCtrl_getGen($address) {
+		PioneerCtrl_SEND_CMD($address,'?RGD');
+	}
+	# ReceiveEnableInputFunctionInfo
+	function PioneerCtrl_getInputFunc($address) {
+		PioneerCtrl_SEND_CMD($address,'?RGF');
+	}
+	# ReceiveNetworkStanbyInfo
+	function PioneerCtrl_getStandbyInfo($address) {
+		PioneerCtrl_SEND_CMD($address,'?RGC');
+	}
+	# ReceiveiPodInfo
+	function PioneerCtrl_getiPodInfo($address) {
+		PioneerCtrl_SEND_CMD($address,'?ICA');
+	}
+	# Receive OSD
+	function PioneerCtrl_getOSD($address) {
+		PioneerCtrl_SEND_CMD($address,'?GAP');
+	}
+	# ReceiveDisplayInformation
+	function PioneerCtrl_getDisp($address) {
+		PioneerCtrl_SEND_CMD($address,'?GEP');
+	}
+	# ReceiveListAndLineInformation
+	function PioneerCtrl_getList($address) {
+		PioneerCtrl_SEND_CMD($address,'?GDP');
+	}
+	# ReceiveScreenInformation
+	function PioneerCtrl_getScreen($address) {
+		PioneerCtrl_SEND_CMD($address,'?GCP');
+	}
+
 ?>
