@@ -22,6 +22,31 @@
 			}
 			$cmd .= "\r\n";
 			fwrite($fp, $cmd);
+			fclose($fp);
+			// Cool-down time (my VSX preferred 200ms between reconnects...)
+			usleep(200000);
+		}
+		return false;
+	}
+	#This was added because rcv's are slower and less responsive than send commands.
+	function PioneerCtrl_RCV_CMD($address,$command='PO',$parameter=false,$param_first=true) {
+		$fp = fsockopen($address, 8102, $errno, $errstr, 30);
+		if (!$fp) {
+			echo __FUNCTION__."() ERROR: $errstr ($errno), planned command was \"$command\"!\n";
+			return false;
+		} else {
+			$cmd = '';
+			if (! $parameter) {
+				$cmd = $command;
+			} else {
+				if ($param_first) {
+					$cmd = $parameter.$command;
+				} else {
+					$cmd = $command.$parameter;
+				}
+			}
+			$cmd .= "\r\n";
+			fwrite($fp, $cmd);
 			$out = fgets($fp);
 			fclose($fp);
 			flush();
@@ -58,28 +83,21 @@
 	// Pass $fnMuted=true for muted-on
 	// Pass $fnMuted=false for muted-off
 	function PioneerCtrl_setMuting($address,$fnMuted) {
-		$mutedTo = 'F';
-		if ($fnMuted)
-			$mutedTo = 'O';
-		PioneerCtrl_SEND_CMD($address,'M'.$mutedTo);
+		PioneerCtrl_SEND_CMD($address,$fnMuted);
 	}
 	// Request the current status of audio output muting on the 822-K amp unit
 	// On success returns *1* for un-muted (IE: "VOL XYZ" shown on LCD) or *0* for
 	// "MUTING" -- success values are int types.  On failure, returns BOOLEAN type
 	// false (remember to use === or !== to differentiate 0 from false!!!)
 	function PioneerCtrl_getMuting($address) {
-		$out = PioneerCtrl_SEND_CMD($address,'?M');
+		$out = PioneerCtrl_RCV_CMD($address,'?M');
 		if ( $out === false ) return false;
 		// It would be best to have a more-rigorous failure handling for this one:
-		$out = trim($out);
-		if (strtoupper($out)==='R') return false;
-		if (strlen($out)!=4) return false;
-		$out = substr($out,3);
-		if ($out!=='0'&&$out!=='1') return false;
-		return intval(trim($out));
+			$val = trim($out);
+			return $val;
 	}
 	function PioneerCtrl_getPower($address) {
-		$out = PioneerCtrl_SEND_CMD($address,'?P');
+		$out = PioneerCtrl_RCV_CMD($address,'?P');
 		if ( $out === false ) return false;
 		// It would be best to have a more-rigorous failure handling for this one:
 		if (trim($out) == 'PWR0'){
@@ -105,7 +123,7 @@
 	// (a value ranging 0 to 80 is the expected value on my 822-K unit)
 	// Returns the current volume as int on OK or false (boolean) on error
 	function PioneerCtrl_getVolVal($address) {
-		$out = PioneerCtrl_SEND_CMD($address,'?V');
+		$out = PioneerCtrl_RCV_CMD($address,'?V');
 		if (! $out) return false;
 		$val = intval((((intval(substr($out,3)))-1)/2));
 		return $val;
@@ -133,7 +151,7 @@
 		$inNames["FN46"] = "AirPlay";
 		$inNames["FN47"] = "DMR";
 		$inNames["FN49"] = "Game";
-		$out = PioneerCtrl_SEND_CMD($address,'?FN');
+		$out = PioneerCtrl_RCV_CMD($address,'?FN');
 		if (! $out) return false;
 		$val = trim($out);
 		return $inNames[$val];
@@ -197,35 +215,35 @@
 	}
 	# ReceiveGenerationInfo
 	function PioneerCtrl_getGen($address) {
-		PioneerCtrl_SEND_CMD($address,'?RGD');
+		PioneerCtrl_RCV_CMD($address,'?RGD');
 	}
 	# ReceiveEnableInputFunctionInfo
 	function PioneerCtrl_getInputFunc($address) {
-		PioneerCtrl_SEND_CMD($address,'?RGF');
+		PioneerCtrl_RCV_CMD($address,'?RGF');
 	}
 	# ReceiveNetworkStanbyInfo
 	function PioneerCtrl_getStandbyInfo($address) {
-		PioneerCtrl_SEND_CMD($address,'?RGC');
+		PioneerCtrl_RCV_CMD($address,'?RGC');
 	}
 	# ReceiveiPodInfo
 	function PioneerCtrl_getiPodInfo($address) {
-		PioneerCtrl_SEND_CMD($address,'?ICA');
+		PioneerCtrl_RCV_CMD($address,'?ICA');
 	}
 	# Receive OSD
 	function PioneerCtrl_getOSD($address) {
-		PioneerCtrl_SEND_CMD($address,'?GAP');
+		PioneerCtrl_RCV_CMD($address,'?GAP');
 	}
 	# ReceiveDisplayInformation
 	function PioneerCtrl_getDisp($address) {
-		PioneerCtrl_SEND_CMD($address,'?GEP');
+		PioneerCtrl_RCV_CMD($address,'?GEP');
 	}
 	# ReceiveListAndLineInformation
 	function PioneerCtrl_getList($address) {
-		PioneerCtrl_SEND_CMD($address,'?GDP');
+		PioneerCtrl_RCV_CMD($address,'?GDP');
 	}
 	# ReceiveScreenInformation
 	function PioneerCtrl_getScreen($address) {
-		PioneerCtrl_SEND_CMD($address,'?GCP');
+		PioneerCtrl_RCV_CMD($address,'?GCP');
 	}
 
 ?>

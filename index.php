@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php 
-$ip = '192.168.2.4';
+include 'config.php';
 include 'pioneer.lib.php'; ?>
 <html>
   <head>
@@ -21,18 +21,17 @@ include 'pioneer.lib.php'; ?>
     <script src="js/bootstrap.js"></script>
 		<form method="post" action="index.php">
 			Power:
-				<input name="PO" type="submit" value="Power On" />
-				<input name="PF" type="submit" value="Power Off" />
 				<input name="PT" type="submit" value="Power Toggle" />
-				<input name="GP" type="submit" value="Get Power" />
 			<br>
 			Function:
 				<input name="FU" type="submit" value="Function Next" />
 				<input name="FD" type="submit" value="Function Last" />
 				<input name="GF" type="submit" value="Get Function" />
-			<a href="">Open Extended Menu</a>
+				<a href="functions.php" onclick="window.open('functions.php','Function','width=800,height=600').focus();return false">Open Function Menu</a>
+
 			<br>
 			Volume:
+				<input name="MT" type="submit" value="Mute" />
 				<input name="VU" type="submit" value="+1" />
 				<input name="VD" type="submit" value="-1" />
 				<input name="VU5" type="submit" value="+5" />
@@ -40,7 +39,15 @@ include 'pioneer.lib.php'; ?>
 				<input name="GV" type="submit" value="Get Volume" />
 			<br>
 			Tuner:
-				<input name="tune" type="submit" value="Tune" />
+				<a href="presets.php" onclick="window.open('presets.php','Preset','width=800,height=600').focus();return false">Presets</a>
+			<br>
+			Surround:
+				<input name="SR1" type="submit" value="Advanced Surround" />
+				<input name="SR2" type="submit" value="Auto/Direct" />
+				<input name="SR3" type="submit" value="ALC/Standard" />
+			<br>
+			Media:
+				<a href="media.php" onclick="window.open('media.php','Preset','width=800,height=600').focus();return false">Media Functions</a>
 		</form>
 	</body>
 	<?php include 'pioneer.check.php'; ?>

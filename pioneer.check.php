@@ -1,12 +1,4 @@
 <?php
-#Power On
-if(isset($_POST['PO'])){
-	PioneerCtrl_setPower($ip,'PO');
-	}
-#Power Off
-if(isset($_POST['PF'])){
-	PioneerCtrl_setPower($ip,'PF');
-	}
 #power toggle
 #receiver needs to have network standby enabled before this fully works
 if(isset($_POST['PT'])){
@@ -15,14 +7,25 @@ if(isset($_POST['PT'])){
 	}
 	if (PioneerCtrl_getPower($ip) == 'PF'){
 		PioneerCtrl_setPower($ip,'PO');
+		echo 'Power turned on';
 	} elseif (PioneerCtrl_getPower($ip) == 'PO'){
 		PioneerCtrl_setPower($ip,'PF');
+		echo 'Power turned off';
 	}
 }
-#Get Power state
-if(isset($_POST['GP'])){
-	echo(PioneerCtrl_getPower($ip));
+#Mute toggle
+if(isset($_POST['MT'])){
+	if (PioneerCtrl_getMuting($ip) === false){
+		echo 'unit did not respond';
 	}
+	if (PioneerCtrl_getMuting($ip) == 'MUT0'){
+		PioneerCtrl_setMuting($ip,'MF');
+		echo 'Muting turned off';
+	} elseif (PioneerCtrl_getMuting($ip) == 'MUT1'){
+		PioneerCtrl_setMuting($ip,'MO');
+		echo 'Muting turned on';
+	}
+}
 #Volume Up
 if(isset($_POST['VU'])){
 	if (PioneerCtrl_getVolVal($ip) == '67'){
@@ -87,7 +90,15 @@ if(isset($_POST['GF'])){
 	echo(PioneerCtrl_getSource($ip));
 	}
 #change tuner preset
-if(isset($_POST['tune'])){
-	
+if(isset($_POST['SR1'])){
+	PioneerCtrl_setAdvSurr($ip);
+	}
+#change tuner preset
+if(isset($_POST['SR2'])){
+	PioneerCtrl_setAutoDirect($ip);
+	}
+#change tuner preset
+if(isset($_POST['SR3'])){
+	PioneerCtrl_setAlcStd($ip);
 	}
 ?>

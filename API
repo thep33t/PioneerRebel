@@ -1,0 +1,19 @@
+?RGD ReceiveGenerationInfo
+?RGF ReceiveEnableInputFunctionInfo
+?RGC ReceiveNetworkStanbyInfo
+?PWR ReceivePowerStatus
+	PWR0 Power on
+	PWR1 Cold standby
+	PWR2 Network standby
+?ICA 
+	ICA0: iPod off
+	ICA1: iPod on
+?GAP Prints OSD info
+?GEP ReceiveDisplayInformation
+?GDP ReceiveListAndLineInformation
+?GCP ReceiveScreenInformation
+
+
+
+Select List Item        NNNNNGHP        where N is a 5 digit zero-padded number indicating the item index to select
+Scroll Page        NNNNNGGP        where N is a 5 digit zero-padded number representing the item index to scroll to
