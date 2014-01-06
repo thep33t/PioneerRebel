@@ -246,4 +246,9 @@
 		PioneerCtrl_RCV_CMD($address,'?GCP');
 	}
 
+	function DisplayResults($message) {
+		echo '<div style="position:absolute; left:0px; right:0px; z-index:2;"class="jumbotron" id="status">';
+		echo '<h1>' . $message . '</h1>';
+		echo '</div>';
+	}
 ?>

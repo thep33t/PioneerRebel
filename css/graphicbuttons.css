@@ -1,3 +1,128 @@
-.test {
-	/*! CSS stuff goes here*/
+#power {
+	background-image: url(../img/remote_01.png);
+	background-position:  0px 0px;
+    background-repeat: no-repeat;
+    width: 267px;
+    height: 267px;
+    border: 0px;
+}
+#inputnext {
+	background-image: url(../img/remote_02.png);
+	background-position:  0px 0px;
+    background-repeat: no-repeat;
+    width: 267px;
+    height: 267px;
+    border: 0px;
+}
+#inputlast {
+	background-image: url(../img/remote_03.png);
+	background-position:  0px 0px;
+    background-repeat: no-repeat;
+    width: 267px;
+    height: 267px;
+    border: 0px;
+}
+#inputmenu {
+	background-image: url(../img/remote_04.png);
+	background-position:  0px 0px;
+    background-repeat: no-repeat;
+    width: 267px;
+    height: 267px;
+    border: 0px;
+}
+#volumeless5 {
+	background-image: url(../img/remote_06.png);
+	background-position:  0px 0px;
+    background-repeat: no-repeat;
+    width: 267px;
+    height: 267px;
+    border: 0px;
+}
+#volumeless1 {
+	background-image: url(../img/remote_07.png);
+	background-position:  0px 0px;
+    background-repeat: no-repeat;
+    width: 267px;
+    height: 267px;
+    border: 0px;
+}
+#volumemore1 {
+	background-image: url(../img/remote_08.png);
+	background-position:  0px 0px;
+    background-repeat: no-repeat;
+    width: 267px;
+    height: 267px;
+    border: 0px;
+}
+#volumemore5 {
+	background-image: url(../img/remote_09.png);
+	background-position:  0px 0px;
+    background-repeat: no-repeat;
+    width: 267px;
+    height: 267px;
+    border: 0px;
+}
+#mute {
+	background-image: url(../img/remote_10.png);
+	background-position:  0px 0px;
+    background-repeat: no-repeat;
+    width: 267px;
+    height: 267px;
+    border: 0px;
+}
+#getvolume {
+	background-image: url(../img/remote_11.png);
+	background-position:  0px 0px;
+    background-repeat: no-repeat;
+    width: 267px;
+    height: 267px;
+    border: 0px;
+}
+#getinput {
+	background-image: url(../img/remote_12.png);
+	background-position:  0px 0px;
+    background-repeat: no-repeat;
+    width: 267px;
+    height: 267px;
+    border: 0px;
+}
+#presets {
+	background-image: url(../img/remote_13.png);
+	background-position:  0px 0px;
+    background-repeat: no-repeat;
+    width: 267px;
+    height: 267px;
+    border: 0px;
+}
+#surround1 {
+	background-image: url(../img/remote_14.png);
+	background-position:  0px 0px;
+    background-repeat: no-repeat;
+    width: 267px;
+    height: 267px;
+    border: 0px;
+}
+#surround2 {
+	background-image: url(../img/remote_15.png);
+	background-position:  0px 0px;
+    background-repeat: no-repeat;
+    width: 267px;
+    height: 267px;
+    border: 0px;
+}
+#surround3 {
+	background-image: url(../img/remote_16.png);
+	background-position:  0px 0px;
+    background-repeat: no-repeat;
+    width: 267px;
+    height: 267px;
+    border: 0px;
+}
+#media {
+	background-image: url(../img/remote_17.png);
+	background-position:  0px 0px;
+    background-repeat: no-repeat;
+    width: 267px;
+    height: 267px;
+    border: 0px;
 }
