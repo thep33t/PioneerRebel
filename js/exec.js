@@ -131,7 +131,7 @@ $('div.sr3').on('click', function() {
 })
 $('div.mute').on('click', function() {
 	$.ajax({
-		url: '../sendcmd123.php?command=MT',
+		url: '../PioneerRebel/sendcmd.php?command=MT',
 
 		success: function(data) {
 			res.container.html(data);
