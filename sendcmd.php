@@ -2,7 +2,7 @@
 #This file gets called from JQuery's AJAX library on index.php, it processes commands via GET
 #the If statements in here then call functions in lib.p822k.php
 include 'lib.p822k.php';
-$ip = '192.168.2.4';
+$ip = '192.168.2.175';
 $command = $_GET['command'];
 
 #power toggle

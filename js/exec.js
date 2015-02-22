@@ -14,7 +14,7 @@ var res = {
 }
 $('div.power').on('click', function() {
 	$.ajax({
-		url: '../sendcmd.php?command=PT',
+		url: '../PioneerRebel/sendcmd.php?command=PT',
 
 		success: function(data) {
 			res.container.html(data);
@@ -24,7 +24,7 @@ $('div.power').on('click', function() {
 })
 $('div.gp').on('click', function() {
 	$.ajax({
-		url: '../sendcmd.php?command=GP',
+		url: '../PioneerRebel/sendcmd.php?command=GP',
 
 		success: function(data) {
 			res.container.html(data);
@@ -34,7 +34,7 @@ $('div.gp').on('click', function() {
 })
 $('div.volm5').on('click', function() {
 	$.ajax({
-		url: '../sendcmd.php?command=VD5',
+		url: '../PioneerRebel/sendcmd.php?command=VD5',
 
 		success: function(data) {
 			res.container.html(data);
@@ -44,7 +44,7 @@ $('div.volm5').on('click', function() {
 })
 $('div.volm1').on('click', function() {
 	$.ajax({
-		url: '../sendcmd.php?command=VD',
+		url: '../PioneerRebel/sendcmd.php?command=VD',
 
 		success: function(data) {
 			res.container.html(data);
@@ -54,7 +54,7 @@ $('div.volm1').on('click', function() {
 })
 $('div.volp1').on('click', function() {
 	$.ajax({
-		url: '../sendcmd.php?command=VU',
+		url: '../PioneerRebel/sendcmd.php?command=VU',
 
 		success: function(data) {
 			res.container.html(data);
@@ -64,7 +64,7 @@ $('div.volp1').on('click', function() {
 })
 $('div.volp5').on('click', function() {
 	$.ajax({
-		url: '../sendcmd.php?command=VU5',
+		url: '../PioneerRebel/sendcmd.php?command=VU5',
 
 		success: function(data) {
 			res.container.html(data);
@@ -74,7 +74,7 @@ $('div.volp5').on('click', function() {
 })
 $('div.FU').on('click', function() {
 	$.ajax({
-		url: '../sendcmd.php?command=FU',
+		url: '../PioneerRebel/sendcmd.php?command=FU',
 
 		success: function(data) {
 			res.container.html(data);
@@ -84,7 +84,7 @@ $('div.FU').on('click', function() {
 })
 $('div.FD').on('click', function() {
 	$.ajax({
-		url: '../sendcmd.php?command=FD',
+		url: '../PioneerRebel/sendcmd.php?command=FD',
 
 		success: function(data) {
 			res.container.html(data);
@@ -94,7 +94,7 @@ $('div.FD').on('click', function() {
 })
 $('div.sr1').on('click', function() {
 	$.ajax({
-		url: '../sendcmd.php?command=SR1',
+		url: '../PioneerRebel/sendcmd.php?command=SR1',
 
 		success: function(data) {
 			res.container.html(data);
@@ -103,7 +103,7 @@ $('div.sr1').on('click', function() {
 })
 $('div.sr2').on('click', function() {
 	$.ajax({
-		url: '../sendcmd.php?command=SR2',
+		url: '../PioneerRebel/sendcmd.php?command=SR2',
 
 		success: function(data) {
 			res.container.html(data);
@@ -112,7 +112,7 @@ $('div.sr2').on('click', function() {
 })
 $('div.sr3').on('click', function() {
 	$.ajax({
-		url: '../sendcmd.php?command=SR3',
+		url: '../PioneerRebel/sendcmd.php?command=SR3',
 
 		success: function(data) {
 			res.container.html(data);
@@ -121,7 +121,7 @@ $('div.sr3').on('click', function() {
 })
 $('div.mute').on('click', function() {
 	$.ajax({
-		url: '../sendcmd.php?command=MT',
+		url: '../sendcmd123.php?command=MT',
 
 		success: function(data) {
 			res.container.html(data);
