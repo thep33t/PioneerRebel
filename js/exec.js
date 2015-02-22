@@ -261,6 +261,56 @@ $('div.HDZBD').on('click', function() {
                 }
         })
 })
+$('div.CSLP').on('click', function() {
+        $.ajax({
+                url: '../PioneerRebel/sendcmd.php?command=CSLP',
+
+                success: function(data) {
+                        res.container.html(data);
+                        setTimeout(clear, 4000);
+                }
+        })
+})
+$('div.RSLP').on('click', function() {
+        $.ajax({
+                url: '../PioneerRebel/sendcmd.php?command=RSLP',
+
+                success: function(data) {
+                        res.container.html(data);
+                        setTimeout(clear, 4000);
+                }
+        })
+})
+$('div.SLP30').on('click', function() {
+        $.ajax({
+                url: '../PioneerRebel/sendcmd.php?command=SLP30',
+
+                success: function(data) {
+                        res.container.html(data);
+                        setTimeout(clear, 4000);
+                }
+        })
+})
+$('div.SLP60').on('click', function() {
+        $.ajax({
+                url: '../PioneerRebel/sendcmd.php?command=SLP60',
+
+                success: function(data) {
+                        res.container.html(data);
+                        setTimeout(clear, 4000);
+                }
+        })
+})
+$('div.SLP90').on('click', function() {
+        $.ajax({
+                url: '../PioneerRebel/sendcmd.php?command=SLP90',
+
+                success: function(data) {
+                        res.container.html(data);
+                        setTimeout(clear, 4000);
+                }
+        })
+})
 
 
 

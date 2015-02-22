@@ -19,8 +19,9 @@
 		<h1 href="#" class="big">Power</h1>
 			<table>
 				<div class="button-holder">
-					<div align="center" class="button2 power">Power</div>
-					<div align="center" class="button2 gp">CheckPwr</div>
+					<div align="center" class="button3 power">Power</div>
+					<div align="center" class="button3 gp">CheckPwr</div>
+                                        <div align="center" class="button3"><a href="sleep.php">Sleep Timer</a></div>
                                 </div>
                         </table>
                         <br><br><br><br>
@@ -53,7 +54,7 @@
 				<div class="button-holder">
 					<div align="center" class="button3 FU">Input +</div>
 					<div align="center" class="button3 FD">Input -</div>
-					<div align="center" class="button3"><a href="inputs.php">Inputs</a></div>
+					<div align="center" class="button3"><a href="inputs.php">Select Input</a></div>
 				</div>
 			</table>
 			<br><br><br><br>

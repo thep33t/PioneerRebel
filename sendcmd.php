@@ -183,6 +183,40 @@ if($command == 'HDZBD'){
         PioneerCtrl_setHDZsource($ip, '25');
         DisplayResults('<div class="statuscontent">' . PioneerCtrl_getHDZSource($ip, $inNames) . '</dev>');
         }
+#Check Sleep Timer
+if($command == 'CSLP'){
+        DisplayResults('<div class="statuscontent">' . PioneerCtrl_checkSleep($ip) . '</dev>');
+        }
+#Reset Sleep Timer
+if($command == 'RSLP'){
+	PioneerCtrl_setSleep($ip, '000');
+	if(PioneerCtrl_checkSleep($ip)==0){
+		DisplayResults('<div class="statuscontent">Sleep is Off</div>');
+	}else{		DisplayResults('<div class="statuscontent">' . PioneerCtrl_checkSleep($ip) . '</dev>');}
+	}
+#Set Sleep Timer=30
+if($command == 'SLP30'){
+        PioneerCtrl_setSleep($ip, '030');
+        if(PioneerCtrl_checkSleep($ip)==0){
+                DisplayResults('<div class="statuscontent">Sleep is Off</div>');
+        }else{          DisplayResults('<div class="statuscontent">Sleeping for: ' . PioneerCtrl_checkSleep($ip) . '</dev>');}
+        }
+#Set Sleep Timer=30
+if($command == 'SLP60'){
+        PioneerCtrl_setSleep($ip, '060');
+        if(PioneerCtrl_checkSleep($ip)==0){
+                DisplayResults('<div class="statuscontent">Sleep is Off</div>');
+        }else{          DisplayResults('<div class="statuscontent">Sleeping for: ' . PioneerCtrl_checkSleep($ip) . '</dev>');}
+        }
+#Set Sleep Timer=30
+if($command == 'SLP90'){
+        PioneerCtrl_setSleep($ip, '090');
+        if(PioneerCtrl_checkSleep($ip)==0){
+                DisplayResults('<div class="statuscontent">Sleep is Off</div>');
+        }else{          DisplayResults('<div class="statuscontent">Sleeping for: ' . PioneerCtrl_checkSleep($ip) . '</dev>');}
+        }
+
+
 
 
 ?>

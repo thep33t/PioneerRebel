@@ -192,7 +192,6 @@
                 $val = trim($out);
                 return $inNamesHDZ[$val];
 	}
-
         # Sets HDZ function up (like physical jog wheel)
         function PioneerCtrl_setHDZFNUp($address) {
                 PioneerCtrl_SEND_CMD($address,'ZEC');
@@ -201,10 +200,17 @@
         function PioneerCtrl_setHDZFNDn($address) {
                 PioneerCtrl_SEND_CMD($address,'ZEB');
         }
-
-
         function PioneerCtrl_setHDZSource($address,$fnInput) {
                 PioneerCtrl_SEND_CMD($address,$fnInput.'ZEA');
+        }
+        function PioneerCtrl_checkSleep($address) {
+                $out = PioneerCtrl_RCV_CMD($address,'?SAB');
+                if (! $out) return false;
+                $val = intval(intval(substr($out,3)));
+                return $val;
+        }
+        function PioneerCtrl_setSleep($address,$fnInput) {
+                $out = PioneerCtrl_SEND_CMD($address,$fnInput.'SAB');
         }
 
 
