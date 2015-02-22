@@ -27,12 +27,12 @@
                 <h1 href="#" class="big">HDZone</h1>
                         <table>
                                 <div class="button-holder">
-					<div align="center" class="button2 HDZpower">HDZ Power</div>
-                                        <div align="center" class="button2 HDZgp">GETHDZ Power</div>
-                                        <div align="center" class="button3 gHDZin">Get HDZ Input</div>
-                                        <div align="center" class="button3 ZEC">HDZ Input +</div>
-                                        <div align="center" class="button3 ZEB">HDZ Input -</div>
-
+					<div align="center" class="button3 HDZpower">Power</div>
+                                        <div align="center" class="button3 HDZgp">CheckPwr</div>
+                                        <div align="center" class="button3 HDZATV">Apple TV</div>
+                                        <div align="center" class="button3 gHDZin">Get Input</div>
+                                        <div align="center" class="button3 ZEC">Input +</div>
+                                        <div align="center" class="button3"><a href="inputsHDZ.php">Select Input</a></div>
                                 </div>
                         </table>
                         <br><br><br><br><br><br><br><br>
@@ -48,7 +48,7 @@
 				</div>
 			</table>
 			<br><br><br><br>
-		<h1 href="#" class="big">Input</h1>
+		<h1 href="#" class="big">Main</h1>
 			<table>
 				<div class="button-holder">
 					<div align="center" class="button3 FU">Input +</div>

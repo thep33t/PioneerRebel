@@ -102,10 +102,9 @@ $('div.test').on('click', function() {
                 }
         })
 })
-
-$('div.sr1').on('click', function() {
+$('div.GMainIn').on('click', function() {
 	$.ajax({
-		url: '../PioneerRebel/sendcmd.php?command=SR1',
+		url: '../PioneerRebel/sendcmd.php?command=GF',
 
 		success: function(data) {
 			res.container.html(data);
@@ -192,6 +191,77 @@ $('div.ZEB').on('click', function() {
                 }
         })
 })
+$('div.HDZBLURAY').on('click', function() {
+        $.ajax({
+                url: '../PioneerRebel/sendcmd.php?command=HDZBLURAY',
+
+                success: function(data) {
+                        res.container.html(data);
+                        setTimeout(clear, 4000);
+                }
+        })
+})
+$('div.HDZHTPC').on('click', function() {
+        $.ajax({
+                url: '../PioneerRebel/sendcmd.php?command=HDZHTPC',
+
+                success: function(data) {
+                        res.container.html(data);
+                        setTimeout(clear, 4000);
+                }
+        })
+})
+$('div.HDZCOMP').on('click', function() {
+        $.ajax({
+                url: '../PioneerRebel/sendcmd.php?command=HDZCOMP',
+
+                success: function(data) {
+                        res.container.html(data);
+                        setTimeout(clear, 4000);
+                }
+        })
+})
+$('div.HDZATV').on('click', function() {
+        $.ajax({
+                url: '../PioneerRebel/sendcmd.php?command=HDZATV',
+
+                success: function(data) {
+                        res.container.html(data);
+                        setTimeout(clear, 4000);
+                }
+        })
+})
+$('div.HDZXBONE').on('click', function() {
+        $.ajax({
+                url: '../PioneerRebel/sendcmd.php?command=HDZXBONE',
+
+                success: function(data) {
+                        res.container.html(data);
+                        setTimeout(clear, 4000);
+                }
+        })
+})
+$('div.HDZHDMI5').on('click', function() {
+        $.ajax({
+                url: '../PioneerRebel/sendcmd.php?command=HDZHDMI5',
+
+                success: function(data) {
+                        res.container.html(data);
+                        setTimeout(clear, 4000);
+                }
+        })
+})
+$('div.HDZBD').on('click', function() {
+        $.ajax({
+                url: '../PioneerRebel/sendcmd.php?command=HDZBD',
+
+                success: function(data) {
+                        res.container.html(data);
+                        setTimeout(clear, 4000);
+                }
+        })
+})
+
 
 
 
