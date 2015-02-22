@@ -110,23 +110,20 @@
 		return $val;
 	}
 	function PioneerCtrl_getSource($address) {
-		$inNames["FN01"] = "CD";
-		$inNames["FN02"] = "Tuner";
-		$inNames["FN04"] = "DVD";
-		$inNames["FN05"] = "TV";
-		$inNames["FN06"] = "SatCbl";
-		$inNames["FN10"] = "Video";
-		$inNames["FN15"] = "DVRBDR";
-		$inNames["FN17"] = "iPodUSB";
-		$inNames["FN25"] = "BD";
-		$inNames["FN33"] = "Adapter";
-		$inNames["FN38"] = "NetRadio";
-		$inNames["FN41"] = "Pandora";
-		$inNames["FN44"] = "MediaServer";
-		$inNames["FN45"] = "Favorites";
-		$inNames["FN46"] = "AirPlay";
-		$inNames["FN47"] = "DMR";
-		$inNames["FN49"] = "Game";
+                $inNames["FN02"] = "Tuner";
+                $inNames["FN04"] = "Bluray";
+                $inNames["FN06"] = "MediaCenterPC";
+                $inNames["FN10"] = "Comp";
+                $inNames["FN15"] = "AppleTV";
+                $inNames["FN17"] = "iPodUSB";
+                $inNames["FN22"] = "Xbox One";
+                $inNames["FN23"] = "HDMI5MHL";
+                $inNames["FN25"] = "BD";
+                $inNames["FN38"] = "NetRadio";
+                $inNames["FN41"] = "Pandora";
+                $inNames["FN44"] = "MediaServer";
+                $inNames["FN45"] = "Favorites";
+                $inNames["FN46"] = "AirPlay";
 		$out = PioneerCtrl_RCV_CMD($address,'?FN');
 		if (! $out) return false;
 		$val = trim($out);
@@ -137,20 +134,6 @@
 
 	function PioneerCtrl_setPreset($address,$presetno) {
 		PioneerCtrl_SEND_CMD($address,$presetno.'PR');
-	}
-
-
-	# Sets "Advanced Surround" like on the remote
-	function PioneerCtrl_setAdvSurr($address) {
-		PioneerCtrl_SEND_CMD($address,'0100SR');
-	}
-	# Sets "Auto/Direct" like on the remote
-	function PioneerCtrl_setAutoDirect($address) {
-		PioneerCtrl_SEND_CMD($address,'0005SR');
-	}
-	# Sets "ALC/Standard" like on the remote
-	function PioneerCtrl_setAlcStd($address) {
-		PioneerCtrl_SEND_CMD($address,'0010SR');
 	}
 
 
@@ -202,4 +185,50 @@
 		echo '<h1>' . $message . '</h1>';
 		echo '</div>';
 	}
+
+        function PioneerCtrl_getHDZPower($address) {
+                $out = PioneerCtrl_RCV_CMD($address,'?ZEP');
+                if ( $out === false ) return false;
+                if (trim($out) == 'ZEP0'){
+                        $val = 'ZEO';
+                        return $val;
+                } else {
+                        $val = 'ZEF';
+                        return $val;
+                }
+        }
+        function PioneerCtrl_setHDZPower($address,$fnPower) {
+                PioneerCtrl_SEND_CMD($address,$fnPower);
+        }
+        function PioneerCtrl_getHDZSource($address) {
+                $inNames["ZEA02"] = "Tuner";
+                $inNames["ZEA04"] = "Bluray";
+                $inNames["ZEA06"] = "MediaCenterPC";
+                $inNames["ZEA10"] = "Comp";
+                $inNames["ZEA15"] = "AppleTV";
+                $inNames["ZEA17"] = "iPodUSB";
+                $inNames["ZEA22"] = "Xbox One";
+                $inNames["ZEA23"] = "HDMI5MHL";
+                $inNames["ZEA25"] = "BD";
+                $inNames["ZEA38"] = "NetRadio";
+                $inNames["ZEA41"] = "Pandora";
+                $inNames["ZEA44"] = "MediaServer";
+                $inNames["ZEA45"] = "Favorites";
+                $inNames["ZEA46"] = "AirPlay";
+                $out = PioneerCtrl_RCV_CMD($address,'?ZEA');
+                if (! $out) return false;
+                $val = trim($out);
+                return $inNames[$val];
+	}
+
+        # Sets HDZ function up (like physical jog wheel)
+        function PioneerCtrl_setHDZFNUp($address) {
+                PioneerCtrl_SEND_CMD($address,'ZEC');
+        }
+        # Sets HDZ function down (like physical jog wheel)
+        function PioneerCtrl_setHDZFNDn($address) {
+                PioneerCtrl_SEND_CMD($address,'ZEB');
+        }
+
+
 ?>

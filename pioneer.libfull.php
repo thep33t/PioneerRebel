@@ -134,23 +134,20 @@
 	// the "FNxy" value that Telnet interface echoed back for the input change
 	// Returns the string value on OK or false (boolean) on error
 	function PioneerCtrl_getSource($address) {
-		$inNames["FN01"] = "CD";
 		$inNames["FN02"] = "Tuner";
-		$inNames["FN04"] = "DVD";
-		$inNames["FN05"] = "TV";
-		$inNames["FN06"] = "SatCbl";
-		$inNames["FN10"] = "Video";
-		$inNames["FN15"] = "DVRBDR";
+		$inNames["FN04"] = "Bluray";
+		$inNames["FN06"] = "MediaCenterPC";
+		$inNames["FN10"] = "Comp";
+		$inNames["FN15"] = "AppleTV";
 		$inNames["FN17"] = "iPodUSB";
+		$inNames["FN22"] = "Xbox One";
+                $inNames["FN23"] = "HDMI5MHL";
 		$inNames["FN25"] = "BD";
-		$inNames["FN33"] = "Adapter";
 		$inNames["FN38"] = "NetRadio";
 		$inNames["FN41"] = "Pandora";
 		$inNames["FN44"] = "MediaServer";
 		$inNames["FN45"] = "Favorites";
 		$inNames["FN46"] = "AirPlay";
-		$inNames["FN47"] = "DMR";
-		$inNames["FN49"] = "Game";
 		$out = PioneerCtrl_RCV_CMD($address,'?FN');
 		if (! $out) return false;
 		$val = trim($out);

@@ -41,12 +41,12 @@ div{
 .big {
     font-family: UltraLight, sans-serif;
     font-weight: 300;
-    font-size:600%;
+    font-size:550%;
 }
 .button-holder {
 	border-color:#0000ff;
 	width: 100%;
-	max-width: 450px;
+	max-width: 700px;
 }
 .button4 {
 	background-color: #000000;
@@ -55,7 +55,7 @@ div{
 	border-width: 2px;
 	float:left;
 	width:15.5%;
-	margin: 10px;
+	margin: 8px;
 	padding-top: 10px;
 	padding-bottom: 10px;
     font-family: sans-serif;
@@ -83,7 +83,7 @@ div{
 	border-width: 2px;
 	float:left;
 	width:36.3%;
-	margin: 10px;
+	margin: 8px;
 	padding-top: 10px;
 	padding-bottom: 10px;
     font-family: sans-serif;

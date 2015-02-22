@@ -86,8 +86,7 @@ if($command == 'VD5'){
 	} else {
 		DisplayResults('<div class="statuscontent">volume unable to be decreased</div>');
 	}
-	
-	}
+}
 #Get Volume
 if($command == 'GV'){
 	DisplayResults('<div class="statuscontent">' . PioneerCtrl_getVolVal($ip) . '</div>');
@@ -106,16 +105,47 @@ if($command == 'FD'){
 if($command == 'GF'){
 	DisplayResults('<div class="statuscontent">' . PioneerCtrl_getSource($ip) . '</div>');
 	}
-#change tuner preset
-if($command == 'SR1'){
-	PioneerCtrl_setAdvSurr($ip);
+#Toggle HDZPower
+if($command == 'HDZPT'){
+        if (PioneerCtrl_getHDZPower($ip) === false){
+                DisplayResults('<div class="statuscontent">unit did not respond</div>');
+        }
+        if (PioneerCtrl_getHDZPower($ip) == 'ZEF'){
+                PioneerCtrl_setHDZPower($ip,'ZEO');
+                DisplayResults('<div class="statuscontent">Power turned on</div>');
+        } elseif (PioneerCtrl_getHDZPower($ip) == 'ZEO'){
+                PioneerCtrl_setHDZPower($ip,'ZEF');
+                DisplayResults('<div class="statuscontent">Power turned off</div>');
+        }
+}
+#Get HDZPower
+if($command == 'HDZGP'){
+        if (PioneerCtrl_getHDZPower($ip) === false){
+                DisplayResults('<div class="statuscontent">unit did not respond</div>');
+        }
+        if (PioneerCtrl_getHDZPower($ip) == 'ZEF'){
+                DisplayResults('<div class="statuscontent">Power is off</div>');
+        } elseif (PioneerCtrl_getHDZPower($ip) == 'ZEO'){
+                DisplayResults('<div class="statuscontent">Power is on</div>');
+        }
+}
+#Get HDZ Input
+if($command == 'HDZGI'){
+        if (PioneerCtrl_getHDZSource($ip) === false){
+                DisplayResults('<div class="statuscontent">Unspecified Source</div>');
 	}
-#change tuner preset
-if($command == 'SR2'){
-	PioneerCtrl_setAutoDirect($ip);
-	}
-#change tuner preset
-if($command == 'SR3'){
-	PioneerCtrl_setAlcStd($ip);
-	}
+		DisplayResults('<div class="statuscontent">' . PioneerCtrl_getHDZSource($ip) . '</div>');
+}
+#HDZ Function Up
+if($command == 'ZEC'){
+        PioneerCtrl_setHDZFNUp($ip);
+        DisplayResults('<div class="statuscontent">' . PioneerCtrl_getHDZSource($ip) . '</div>');
+        }
+#HDZ Function Down
+if($command == 'ZEB'){
+        PioneerCtrl_setHDZFNDn($ip);
+        DisplayResults('<div class="statuscontent">' . PioneerCtrl_getHDZSource($ip) . '</div>');
+        }
+
+
 ?>

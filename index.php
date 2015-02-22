@@ -21,9 +21,21 @@
 				<div class="button-holder">
 					<div align="center" class="button2 power">Power</div>
 					<div align="center" class="button2 gp">CheckPwr</div>
-				</div>
-			</table>
-			<br><br><br><br>
+                                </div>
+                        </table>
+                        <br><br><br><br>
+                <h1 href="#" class="big">HDZone</h1>
+                        <table>
+                                <div class="button-holder">
+					<div align="center" class="button2 HDZpower">HDZ Power</div>
+                                        <div align="center" class="button2 HDZgp">GETHDZ Power</div>
+                                        <div align="center" class="button3 gHDZin">Get HDZ Input</div>
+                                        <div align="center" class="button3 ZEC">HDZ Input +</div>
+                                        <div align="center" class="button3 ZEB">HDZ Input -</div>
+
+                                </div>
+                        </table>
+                        <br><br><br><br><br><br><br><br>
 		<h1 href="#" class="big">Volume</h1>
 			<table>
 				<div class="button-holder">
@@ -31,6 +43,8 @@
 					<div align="center" class="button4 volm1">-1</div>
 					<div align="center" class="button4 volp1">+1</div>
 					<div align="center" class="button4 volp5">+5</div>
+                                        <div align="center" class="button3 mute">Mute</div>
+
 				</div>
 			</table>
 			<br><br><br><br>
@@ -43,23 +57,6 @@
 				</div>
 			</table>
 			<br><br><br><br>
-		<h1 href="#" class="big">Surround</h1>
-			<table>
-				<div class="button-holder">
-					<div align="center" class="button3 sr1">Surr</div>
-					<div align="center" class="button3 sr2">Auto</div>
-					<div align="center" class="button3 sr3">ALC</div>
-				</div>
-			</table>
-			<br><br><br><br>
-		<h1 href="#" class="big">Other</h1>
-			<table>
-				<div class="button-holder">
-					<div align="center" class="button3 mute">Mute</div>
-					<div align="center" class="button3"><a href="presets.php">FM</a></div>
-					<div align="center" class="button3"><a href="media.php">Media</a></div>
-				</div>
-			</table>
 		<div class="statusdiv"></div>
 		<script src="js/parallax.js"></script>
 		<script src="js/jquery-1.10.2.min.js"></script>

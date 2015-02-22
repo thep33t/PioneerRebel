@@ -92,6 +92,17 @@ $('div.FD').on('click', function() {
 		}
 	})
 })
+$('div.test').on('click', function() {
+        $.ajax({
+                url: '../PioneerRebel/sendcmd.php?command=TS',
+
+                success: function(data) {
+                        res.container.html(data);
+                        setTimeout(clear, 4000);
+                }
+        })
+})
+
 $('div.sr1').on('click', function() {
 	$.ajax({
 		url: '../PioneerRebel/sendcmd.php?command=SR1',
@@ -130,9 +141,62 @@ $('div.mute').on('click', function() {
 	})
 })
 
+
+$('div.HDZpower').on('click', function() {
+        $.ajax({
+                url: '../PioneerRebel/sendcmd.php?command=HDZPT',
+
+                success: function(data) {
+                        res.container.html(data);
+                        setTimeout(clear, 4000);
+                }
+        })
+})
+$('div.HDZgp').on('click', function() {
+        $.ajax({
+                url: '../PioneerRebel/sendcmd.php?command=HDZGP',
+
+                success: function(data) {
+                        res.container.html(data);
+                        setTimeout(clear, 4000);
+                }
+        })
+})
+$('div.gHDZin').on('click', function() {
+        $.ajax({
+                url: '../PioneerRebel/sendcmd.php?command=HDZGI',
+
+                success: function(data) {
+                        res.container.html(data);
+                        setTimeout(clear, 4000);
+                }
+        })
+})
+$('div.ZEC').on('click', function() {
+        $.ajax({
+                url: '../PioneerRebel/sendcmd.php?command=ZEC',
+
+                success: function(data) {
+                        res.container.html(data);
+                        setTimeout(clear, 4000);
+                }
+        })
+})
+$('div.ZEB').on('click', function() {
+        $.ajax({
+                url: '../PioneerRebel/sendcmd.php?command=ZEB',
+
+                success: function(data) {
+                        res.container.html(data);
+                        setTimeout(clear, 4000);
+                }
+        })
+})
+
+
+
+
+
 function clear() {
     res.container.html(null);
 }
-
-
-
